@@ -31,6 +31,7 @@ package fr.univ_amu.iut.exercice2;
 /// la fois.
 public class CalculPrix {
 
+  // Très bon travail !
   private static final double MONTANT_FRAIS_PORT = 8.0;
   private static final double SEUIL_FRAIS_PORT_OFFERT = 50.0;
   private static final double TAUX_REMISE_FIDELITE = 0.95;
