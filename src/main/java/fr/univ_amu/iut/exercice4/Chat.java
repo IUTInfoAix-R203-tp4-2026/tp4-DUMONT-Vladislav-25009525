@@ -1,12 +1,13 @@
 package fr.univ_amu.iut.exercice4;
 
-public class Chien extends Animal {
-  public Chien(String nom) {
+public class Chat extends Animal {
+
+  public Chat(String nom) {
     super(nom);
   }
 
   @Override
   public String faireDuBruit() {
-    return "Wouaf !";
+    return "Miaou !";
   }
 }
