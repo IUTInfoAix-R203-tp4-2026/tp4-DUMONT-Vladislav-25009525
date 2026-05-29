@@ -43,6 +43,6 @@ public class GildedRose {
   }
 
   public void updateQuality() {
-    for (int i = 0; i < items.length; i++) Updater.creer(items[i]);
+    for (int i = 0; i < items.length; i++) Updater.creer(items[i]).update();
   }
 }

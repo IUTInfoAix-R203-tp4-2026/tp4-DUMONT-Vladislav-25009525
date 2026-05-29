@@ -8,8 +8,8 @@ public class UpdaterNormal extends Updater {
 
   @Override
   public void update() {
-    if (getItem().quality > getQUALITE_MIN()) getItem().quality = decreaseQuality(getItem());
-    getItem().sellIn = decreaseSellIn(getItem());
-    if (getItem().sellIn < 0) getItem().quality = decreaseQuality(getItem());
+    if (getItem().quality > getQUALITE_MIN()) decreaseQuality(getItem());
+    decreaseSellIn(getItem());
+    if (getItem().sellIn < 0) if (getItem().quality > getQUALITE_MIN()) decreaseQuality(getItem());
   }
 }
