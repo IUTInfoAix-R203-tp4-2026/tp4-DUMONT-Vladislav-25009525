@@ -36,124 +36,13 @@ package fr.univ_amu.iut.exercice6;
 /// Contrainte : la classe [Item] ne doit pas changer (signature figée par
 /// la direction).
 public class GildedRose {
-
-  private static final int SEUIL_BACKSTAGE_X3 = 6;
-  private static final int SEUIL_BACKSTAGE_X2 = 11;
-  private static final int QUALITE_MAX_DEFAUT = 50;
-  private static final int QUALITE_MIN = 0;
   Item[] items;
 
   public GildedRose(Item[] items) {
     this.items = items;
   }
 
-  public void updateQualityP() {
-    for (int i = 0; i < items.length; i++) {
-      Item currentItem = items[i];
-      if (!isAgedBrie(currentItem) && !isBackstage(currentItem)) {
-        if (currentItem.quality > QUALITE_MIN) {
-          if (!isSulfura(currentItem)) {
-            decreaseQuality(currentItem);
-          }
-        }
-      } else {
-        if (currentItem.quality < QUALITE_MAX_DEFAUT) {
-          currentItem.quality = currentItem.quality + 1;
-
-          if (isBackstage(currentItem)) {
-            updateBackstage(currentItem);
-          }
-        }
-      }
-
-      if (!isSulfura(currentItem)) {
-        decreaseSellIn(currentItem);
-      }
-
-      if (currentItem.sellIn < 0) {
-        if (!isAgedBrie(currentItem)) {
-          if (!isBackstage(currentItem)) {
-            if (currentItem.quality > QUALITE_MIN) {
-              if (!isSulfura(currentItem)) {
-                decreaseQuality(currentItem);
-              }
-            }
-          } else {
-            zeroQuality(currentItem);
-          }
-        } else {
-          if (currentItem.quality < QUALITE_MAX_DEFAUT) {
-            increaseQuality(currentItem);
-          }
-        }
-      }
-    }
-  }
-
   public void updateQuality() {
-    for (int i = 0; i < items.length; i++) {
-      Item currentItem = items[i];
-      switch (currentItem.name) {
-        case "Aged Brie":
-          if (currentItem.quality < QUALITE_MAX_DEFAUT)
-            currentItem.quality = currentItem.quality + 1;
-          decreaseSellIn(currentItem);
-          break;
-        case "Backstage passes to a TAFKAL80ETC concert":
-          if (currentItem.quality < QUALITE_MAX_DEFAUT)
-            currentItem.quality = currentItem.quality + 1;
-          updateBackstage(currentItem);
-          decreaseSellIn(currentItem);
-          break;
-        case "Sulfuras, Hand of Ragnaros":
-          break;
-        default:
-          if (currentItem.quality > QUALITE_MIN) decreaseQuality(currentItem);
-          decreaseSellIn(currentItem);
-          break;
-      }
-    }
-  }
-
-  private void increaseQuality(Item currentItem) {
-    currentItem.quality += 1;
-  }
-
-  private void zeroQuality(Item currentItem) {
-    currentItem.quality = 0;
-  }
-
-  private void decreaseSellIn(Item currentItem) {
-    currentItem.sellIn -= 1;
-  }
-
-  private void decreaseQuality(Item currentItem) {
-    currentItem.quality -= 1;
-  }
-
-  private boolean isAgedBrie(Item currentItem) {
-    return currentItem.name.equals("Aged Brie");
-  }
-
-  private boolean isBackstage(Item currentItem) {
-    return currentItem.name.equals("Backstage passes to a TAFKAL80ETC concert");
-  }
-
-  private boolean isSulfura(Item currentItem) {
-    return currentItem.name.equals("Sulfuras, Hand of Ragnaros");
-  }
-
-  private void updateBackstage(Item currentItem) {
-    if (currentItem.sellIn < SEUIL_BACKSTAGE_X2) {
-      if (currentItem.quality < QUALITE_MAX_DEFAUT) {
-        currentItem.quality = currentItem.quality + 1;
-      }
-    }
-
-    if (currentItem.sellIn < SEUIL_BACKSTAGE_X3) {
-      if (currentItem.quality < QUALITE_MAX_DEFAUT) {
-        currentItem.quality = currentItem.quality + 1;
-      }
-    }
+    for (int i = 0; i < items.length; i++) Updater.creer(items[i]);
   }
 }
