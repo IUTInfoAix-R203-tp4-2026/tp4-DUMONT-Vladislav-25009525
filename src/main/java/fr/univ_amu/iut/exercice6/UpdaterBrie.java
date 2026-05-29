@@ -10,6 +10,6 @@ public class UpdaterBrie extends Updater {
   public void update() {
     if (getItem().quality < getQUALITE_MAX_DEFAUT()) increaseQuality(getItem());
     decreaseSellIn(getItem());
-    if (getItem().sellIn < 0) increaseQuality(getItem());
+    if (getItem().sellIn < 0) if (getItem().quality > getQUALITE_MIN()) increaseQuality(getItem());
   }
 }

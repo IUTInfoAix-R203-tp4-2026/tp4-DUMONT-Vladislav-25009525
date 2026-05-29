@@ -31,12 +31,12 @@ public abstract class Updater {
     currentItem.quality = 0;
   }
 
-  public static int decreaseSellIn(Item currentItem) {
-    return currentItem.sellIn -= 1;
+  public static void decreaseSellIn(Item currentItem) {
+    currentItem.sellIn -= 1;
   }
 
-  public static int decreaseQuality(Item currentItem) {
-    return currentItem.quality -= 1;
+  public static void decreaseQuality(Item currentItem) {
+    currentItem.quality -= 1;
   }
 
   public static Updater creer(Item item) {
@@ -47,6 +47,8 @@ public abstract class Updater {
         return new UpdaterBackstage(item);
       case "Sulfuras, Hand of Ragnaros":
         return new UpdaterSulfuras(item);
+      case "Conjured Mana Cake":
+        return new UpdaterConjured(item);
       default:
         return new UpdaterNormal(item);
     }
