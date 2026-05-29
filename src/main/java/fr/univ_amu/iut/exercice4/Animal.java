@@ -24,21 +24,30 @@ package fr.univ_amu.iut.exercice4;
 public abstract class Animal {
 
   private final String nom;
-  private final String type; // "chien", "chat", "vache", "canard"
 
-  public Animal(String nom, String type) {
+  public Animal(String nom) {
     this.nom = nom;
-    this.type = type;
   }
 
   public String getNom() {
     return nom;
   }
 
-  public String getType() {
-    return type;
-  }
-
   // Retourne le cri de l'animal selon son type.
   public abstract String faireDuBruit();
+
+  public static Animal creer(String type, String nom) {
+    switch (type) {
+      case "chien":
+        return new Chien(nom);
+      case "chat":
+        return new Chat(nom);
+      case "canard":
+        return new Canard(nom);
+      case "vache":
+        return new Vache(nom);
+      default:
+        throw new IllegalStateException("Type inconnu : " + type);
+    }
+  }
 }
