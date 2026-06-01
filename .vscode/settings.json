@@ -26,6 +26,5 @@
         "/^git\\s+pull\\b/": true,
         "/^git\\s+stash\\b/": true,
         "/^gh\\s+pr\\b/": true
-    },
-    "java.debug.settings.onBuildFailureProceed": true
+    }
 }
